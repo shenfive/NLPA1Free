@@ -1,0 +1,6 @@
+framework module Pods_NLPA1FreeTests {
+  umbrella header "Pods-NLPA1FreeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

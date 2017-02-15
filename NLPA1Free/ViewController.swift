@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +22,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func startTest(_ sender: Any) {
+        performSegue(withIdentifier: "gotoTest", sender: nil)
+    }
 
+    @IBAction func information(_ sender: Any) {
+        performSegue(withIdentifier: "info", sender: nil)
+        
+    
+        
+    }
 }
 
