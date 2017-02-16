@@ -62,8 +62,7 @@ class TestViewController: UIViewController {
             print("wainting for update")
             return
         }
-
-    
+        print(qustions.count)
     }
     
     
