@@ -62,16 +62,7 @@ class TestViewController: UIViewController {
             print("wainting for update")
             return
         }
-        let testSq = getNuberList(numbers: 47)
-        for i in 0...19 {
-            let qus = qustions[testSq[i]] as! NSDictionary
-            print("問題：\(qus.object(forKey: "qustion") as! String)")
-            print("a：\(qus.object(forKey: "a") as! String)")
-            print("b：\(qus.object(forKey: "b") as! String)")
-            print("c：\(qus.object(forKey: "c") as! String)")
 
-        
-        }
     
     }
     
