@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        self.navigationController?.navigationBar.isHidden = true
         
     }
 

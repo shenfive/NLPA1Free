@@ -17,6 +17,7 @@
 		BA84E5551E28CFD3001E8ED2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA84E5531E28CFD3001E8ED2 /* LaunchScreen.storyboard */; };
 		BA84E5601E28CFD3001E8ED2 /* NLPA1FreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84E55F1E28CFD3001E8ED2 /* NLPA1FreeTests.swift */; };
 		BA84E56B1E28CFD3001E8ED2 /* NLPA1FreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84E56A1E28CFD3001E8ED2 /* NLPA1FreeUITests.swift */; };
+		BA90E57A1E599D4B0019867A /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90E5791E599D4B0019867A /* AnalyticsViewController.swift */; };
 		BA94EF8D1E4C872B009D4F3F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA94EF8C1E4C872B009D4F3F /* InfoViewController.swift */; };
 		BA94EF8F1E4C96DA009D4F3F /* nlpfreeinfo.html in Resources */ = {isa = PBXBuildFile; fileRef = BA94EF8E1E4C96DA009D4F3F /* nlpfreeinfo.html */; };
 		BAD4D3D41E4CB07300D1700C /* ReachabilitySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD4D3D31E4CB07300D1700C /* ReachabilitySwift.framework */; };
@@ -65,6 +66,7 @@
 		BA84E5661E28CFD3001E8ED2 /* NLPA1FreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NLPA1FreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA84E56A1E28CFD3001E8ED2 /* NLPA1FreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPA1FreeUITests.swift; sourceTree = "<group>"; };
 		BA84E56C1E28CFD3001E8ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA90E5791E599D4B0019867A /* AnalyticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 		BA94EF8C1E4C872B009D4F3F /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		BA94EF8E1E4C96DA009D4F3F /* nlpfreeinfo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = nlpfreeinfo.html; sourceTree = "<group>"; };
 		BAD4D3D31E4CB07300D1700C /* ReachabilitySwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReachabilitySwift.framework; path = "../../Library/Developer/Xcode/DerivedData/NLPA1Free-ezxxiatgyuwxlkgwhxnyjakzxfqj/Build/Products/Debug-iphonesimulator/ReachabilitySwift/ReachabilitySwift.framework"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				BA84E5561E28CFD3001E8ED2 /* Info.plist */,
 				BA4E89EB1E2A25B500E8556D /* TestViewController.swift */,
 				BA94EF8C1E4C872B009D4F3F /* InfoViewController.swift */,
+				BA90E5791E599D4B0019867A /* AnalyticsViewController.swift */,
 			);
 			path = NLPA1Free;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 			files = (
 				BA84E54D1E28CFD3001E8ED2 /* ViewController.swift in Sources */,
 				BA4E89EC1E2A25B600E8556D /* TestViewController.swift in Sources */,
+				BA90E57A1E599D4B0019867A /* AnalyticsViewController.swift in Sources */,
 				BA94EF8D1E4C872B009D4F3F /* InfoViewController.swift in Sources */,
 				BA84E54B1E28CFD3001E8ED2 /* AppDelegate.swift in Sources */,
 			);

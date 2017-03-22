@@ -9,20 +9,53 @@
 import UIKit
 import Firebase
 import ReachabilitySwift
+import VpadnSDKAdKit
+import AVFoundation
 
 class TestViewController: UIViewController {
+    
+    let speaker = AVSpeechSynthesizer()
+    
+    //Vpon
+    var vponAd:VpadnBanner?
+    var vpadInterstitial:VpadnInterstitial?
+    
+    
     
     
     var qustions:NSMutableArray = NSMutableArray()
     let rechablity = Reachability.init()
+    let 最大問題數 = 15
+    var 目前問題指標 = 0
+    var 問題序 = [Int]()
+
+    var userAnswers = [Int]()
     
     let currentDBver = 1
     var dbVer = 0
+    var waitForAnswer = true
 
+    @IBOutlet weak var qustion: UILabel!
+
+    @IBOutlet weak var ans1: UIButton!
+    @IBOutlet weak var ans2: UIButton!
+    @IBOutlet weak var ans3: UIButton!
+    
+    @IBOutlet weak var answerArea: UIView!
+    
+    
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
- 
+        showWaiting()
+        answerArea.isHidden = true
         
+        ans1.titleLabel?.numberOfLines = 2
+        ans2.titleLabel?.numberOfLines = 2
+        ans3.titleLabel?.numberOfLines = 2
+        
+        
+        super.viewDidLoad()
         do{
             try
                 rechablity?.startNotifier()
@@ -30,11 +63,6 @@ class TestViewController: UIViewController {
         }catch{
             print(error.localizedDescription)
         }
-        
-
-        
-        
-        //------------------
         
         view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
 
@@ -47,7 +75,6 @@ class TestViewController: UIViewController {
         dbVer = userDefult.integer(forKey: "dbversion")
         if dbVer < currentDBver {
             updateQustions()
-            print("sss")
         }else{
             qustions = userDefult.mutableArrayValue(forKey: "qustions")
             startTest()
@@ -58,26 +85,96 @@ class TestViewController: UIViewController {
     // MARK：開始測驗
     
     func startTest(){
-        if qustions.count == 0  {
-            print("wainting for update")
-            return
-        }
-        print(qustions.count)
+        userAnswers = [Int]()
+        stopWaiting()
+        問題序 = getNumberList(qustions.count)
+        nextQustion()
+    }
+    
+    func nextQustion(){
+        
+        waitForAnswer = true
+        answerArea.isHidden = true
+        answerArea.alpha = 0
+        
+        let 目前題號 = 問題序[目前問題指標]
+        let 目前題目 = qustions.object(at: 目前題號) as! NSDictionary
+        
+        let 答案陣列 = [目前題目.object(forKey: "a") as! String ,
+                        目前題目.object(forKey: "b") as! String,
+                        目前題目.object(forKey: "c") as! String]
+        let 答案序 = getNumberList(3)
+        
+        self.qustion.alpha = 0
+
+        UIView.animate(withDuration: 1.4, delay: 0.1,  animations: {
+            self.qustion.alpha = 1
+        }, completion: { (complete) in
+            UIView.animate(withDuration: 1.2, delay: 0.2, animations: {
+                self.answerArea.isHidden = false
+                self.answerArea.alpha = 1
+            }, completion: { (complete) in
+                if complete{
+                    self.waitForAnswer = false
+                }
+            })
+        })
+        
+        
+        self.qustion.text = 目前題目.object(forKey: "qustion") as? String
+        ans1.tag = 答案序[0]
+        ans1.setTitle(答案陣列[ans1.tag], for: .normal)
+        ans2.tag = 答案序[1]
+        ans2.setTitle(答案陣列[ans2.tag], for: .normal)
+        ans3.tag = 答案序[2]
+        ans3.setTitle(答案陣列[ans3.tag], for: .normal)
+        
+        let utterance = AVSpeechUtterance(string: self.qustion.text!)
+        utterance.rate = 0.55
+        utterance.pitchMultiplier = 0.9
+        speaker.speak(utterance)
+    
     }
     
     
-    
-    
-    // MARK: 由 FireBase 更新題目
 
+
+    @IBAction func answerSelected(_ sender: UIButton) {
+        
+        // 若答案尚未完成顯示，不做反應
+        if waitForAnswer {
+            return
+        }
+    // 若完成問題去答案頁，不然存答案與下一題
+        userAnswers.append(sender.tag)
+        目前問題指標 += 1
+        if 目前問題指標 >= 最大問題數 {
+            print(userAnswers)
+            self.performSegue(withIdentifier: "goAnalytics", sender: nil)
+          
+            return
+        }
+        nextQustion()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goAnalytics" {
+            let avc = segue.destination as! AnalyticsViewController
+            avc.userAnswers = self.userAnswers
+        }
+    }
+    
+// MARK: 由 FireBase 更新題目
+    
     func updateQustions(){
         
         
+        
+        //檢查網路狀態
         if let networkStatus  = rechablity?.currentReachabilityStatus{
             switch networkStatus {
             case .notReachable:
                 let alert = UIAlertController(title: "警告", message: "目前沒有網路，無法下載題目，請檢查網路狀態後再試", preferredStyle: .alert)
-//                let okButton = UIAlertAction(title: "確定", style: .default, handler: nil)
                 let okButton = UIAlertAction(title: "確定", style: .default, handler: { (action) in
                     self.dismiss(animated: true, completion: nil)
                 })
@@ -90,22 +187,17 @@ class TestViewController: UIViewController {
             case .reachableViaWWAN:
                 print("由手機網路下載")
             }
-        
-        
         }
     
         
         
         
         let refversion = FIRDatabase.database().reference(withPath: "/version/db")
-        
         refversion.observeSingleEvent(of: .value, with:{ (snapshot) in
-
-            print(self.dbVer != (snapshot.value as? Int)!)
             
+            print(self.dbVer != (snapshot.value as? Int)!)
             if self.dbVer != (snapshot.value as? Int)! {
                 let reference = FIRDatabase.database().reference(withPath: "/data/zh-tw")
-
                 reference.observeSingleEvent(of: .value, with: { (snapshot) in
                     let values = snapshot.value as! NSDictionary
                     for item in values {
@@ -116,7 +208,6 @@ class TestViewController: UIViewController {
                             print(item.key)
                                 self.dbVer = item.value as! Int
                         }
-                   
                     }
 
                     UserDefaults.standard.set(self.qustions, forKey: "qustions")
@@ -126,6 +217,7 @@ class TestViewController: UIViewController {
                 }){(error) in
                     print(error.localizedDescription)
                 }
+
             }
             
         }){(error) in
@@ -137,24 +229,62 @@ class TestViewController: UIViewController {
 
     }
     
-    func getNuberList(numbers:Int) -> [Int] {
-        print("start")
-        var numbersArray:[Int] = [Int()]
-        for i in 0...numbers {
+    
+    
+    // MARK: 常用 Functions
+    
+    
+    
+    // 由 number 取 inThe  個的陣列, 產生亂數
+    
+    let getNumberList =  {(numbers:Int) -> [Int] in
+        
+        // 產生陣列
+        var numbersArray = [Int]()
+        for i in 0...numbers-1 {
             numbersArray.append(i)
         }
-        for _ in 1...500{
-            let randomSwap = Int(arc4random()) % numbers
+        
+        //擾亂陣列
+        for _ in 1...( numbers * 2 ) {
+            
+
+            let randomSwapL =  Int64(arc4random()) % Int64(numbers)
+            let randomSwap:Int = Int(randomSwapL)
             let temp = numbersArray[0]
             numbersArray[0] = numbersArray[randomSwap]
             numbersArray[randomSwap] = temp
         }
         print(numbersArray)
+ 
         return numbersArray
     }
     
+    //顯示等待服務（轉圈圈）
+    func showWaiting(){
+        let caverView = UIView()
+        caverView.frame = self.view.frame
+        caverView.backgroundColor = UIColor.white
+        caverView.alpha = 0.5
+        caverView.tag = 10001
+        
+        let waitingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        waitingView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        waitingView.center = self.view.center
+        waitingView.startAnimating()
+        caverView.addSubview(waitingView)
+        self.view.addSubview(caverView)
+    }
     
-    
+    //取消等待服務（取消轉圈圈）
+    func stopWaiting(){
+        for  view in self.view.subviews{
+            if (view.tag == 10001){
+                view.removeFromSuperview()
+            }
+        }
+        
+    }
 
 //    MARK : 更新題目用
 //    func inits(){

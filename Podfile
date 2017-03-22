@@ -9,6 +9,7 @@ target 'NLPA1Free' do
     pod 'Firebase/Messaging'
     pod 'Firebase/Database'
     pod 'ReachabilitySwift', '~> 3'
+    pod 'VpadnSDK', '~>4.6.0'
 
   # Pods for NLPA1Free
 
