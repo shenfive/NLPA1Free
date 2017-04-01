@@ -15,6 +15,11 @@ import AVFoundation
 class TestViewController: UIViewController {
     
     let speaker = AVSpeechSynthesizer()
+
+    
+    
+    
+    
     
     //Vpon
     var vponAd:VpadnBanner?
@@ -129,9 +134,19 @@ class TestViewController: UIViewController {
         ans3.tag = 答案序[2]
         ans3.setTitle(答案陣列[ans3.tag], for: .normal)
         
+        
         let utterance = AVSpeechUtterance(string: self.qustion.text!)
         utterance.rate = 0.55
         utterance.pitchMultiplier = 0.9
+        
+        //強制中文語音
+        let voices = AVSpeechSynthesisVoice.speechVoices()
+        for voice in voices{
+            if "zh-TW" == voice.language{
+                utterance.voice = voice
+            }
+        }
+
         speaker.speak(utterance)
     
     }
