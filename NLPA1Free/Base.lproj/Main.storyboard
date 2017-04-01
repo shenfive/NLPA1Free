@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5EG-ed-yVx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5EG-ed-yVx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -230,10 +230,23 @@
                                     <action selector="backHome:" destination="LKO-y5-gr9" eventType="touchUpInside" id="ssU-bO-xCp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKr-5o-2Cv">
+                                <rect key="frame" x="260" y="20" width="99" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="99" id="Zhv-I0-NQf"/>
+                                    <constraint firstAttribute="height" constant="33" id="uy0-9E-enZ"/>
+                                </constraints>
+                                <state key="normal" image="FB-share"/>
+                                <connections>
+                                    <action selector="fbShare:" destination="LKO-y5-gr9" eventType="touchUpInside" id="jJe-E6-0dH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xKr-5o-2Cv" firstAttribute="trailing" secondItem="quC-4p-5dG" secondAttribute="trailingMargin" id="8og-mu-aeR"/>
                             <constraint firstItem="szz-Ps-Z7z" firstAttribute="top" secondItem="Yvt-5p-NOS" secondAttribute="bottom" constant="8" id="DAt-No-rk4"/>
+                            <constraint firstItem="xKr-5o-2Cv" firstAttribute="top" secondItem="YzR-jv-MGR" secondAttribute="bottom" id="JoJ-ec-Rz7"/>
                             <constraint firstItem="szz-Ps-Z7z" firstAttribute="leading" secondItem="quC-4p-5dG" secondAttribute="leadingMargin" id="fJN-Hl-Nui"/>
                             <constraint firstItem="Yvt-5p-NOS" firstAttribute="leading" secondItem="quC-4p-5dG" secondAttribute="leadingMargin" id="iOe-lI-hqF"/>
                             <constraint firstItem="szz-Ps-Z7z" firstAttribute="trailing" secondItem="quC-4p-5dG" secondAttribute="trailingMargin" id="kj3-mE-FPr"/>
@@ -326,6 +339,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FB-share" width="304" height="112"/>
         <image name="home_back" width="46" height="33"/>
         <image name="projectClub" width="235" height="325"/>
         <image name="topPage" width="320" height="320"/>

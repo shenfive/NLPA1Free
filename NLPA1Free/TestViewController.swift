@@ -9,28 +9,21 @@
 import UIKit
 import Firebase
 import ReachabilitySwift
-import VpadnSDKAdKit
+//import VpadnSDKAdKit
 import AVFoundation
 
 class TestViewController: UIViewController {
     
     let speaker = AVSpeechSynthesizer()
-
-    
-    
-    
-    
     
     //Vpon
-    var vponAd:VpadnBanner?
-    var vpadInterstitial:VpadnInterstitial?
-    
-    
+//    var vponAd:VpadnBanner?
+//    var vpadInterstitial:VpadnInterstitial?
     
     
     var qustions:NSMutableArray = NSMutableArray()
     let rechablity = Reachability.init()
-    let 最大問題數 = 15
+    let 最大問題數 = 16
     var 目前問題指標 = 0
     var 問題序 = [Int]()
 
@@ -47,8 +40,6 @@ class TestViewController: UIViewController {
     @IBOutlet weak var ans3: UIButton!
     
     @IBOutlet weak var answerArea: UIView!
-    
-    
     
     
     override func viewDidLoad() {
@@ -160,6 +151,8 @@ class TestViewController: UIViewController {
         if waitForAnswer {
             return
         }
+        
+        speaker.stopSpeaking(at: .immediate)
     // 若完成問題去答案頁，不然存答案與下一題
         userAnswers.append(sender.tag)
         目前問題指標 += 1
@@ -191,7 +184,8 @@ class TestViewController: UIViewController {
             case .notReachable:
                 let alert = UIAlertController(title: "警告", message: "目前沒有網路，無法下載題目，請檢查網路狀態後再試", preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "確定", style: .default, handler: { (action) in
-                    self.dismiss(animated: true, completion: nil)
+//                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popToRootViewController(animated: true)
                 })
                 alert.addAction(okButton)
                 present(alert, animated: true, completion:nil)

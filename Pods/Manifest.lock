@@ -29,14 +29,12 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - Protobuf (3.2.0)
   - ReachabilitySwift (3)
-  - VpadnSDK (4.6.3)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
   - ReachabilitySwift (~> 3)
-  - VpadnSDK (~> 4.6.0)
 
 SPEC CHECKSUMS:
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
@@ -48,8 +46,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  VpadnSDK: 0e6b971745a89c71ac9f79960d5ede25decc58e3
 
-PODFILE CHECKSUM: 0d865aeba1f4124df7486eb0a2f021c3705aa21c
+PODFILE CHECKSUM: b354f317e63bc98bf41dd7de66a307ef7823d8f0
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1.beta.1
