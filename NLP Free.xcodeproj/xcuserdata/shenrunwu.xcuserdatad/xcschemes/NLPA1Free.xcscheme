@@ -17,7 +17,7 @@
                BlueprintIdentifier = "BA84E5461E28CFD3001E8ED2"
                BuildableName = "NLPA1Free.app"
                BlueprintName = "NLPA1Free"
-               ReferencedContainer = "container:NLPA1Free.xcodeproj">
+               ReferencedContainer = "container:NLP Free.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "BA84E55A1E28CFD3001E8ED2"
                BuildableName = "NLPA1FreeTests.xctest"
                BlueprintName = "NLPA1FreeTests"
-               ReferencedContainer = "container:NLPA1Free.xcodeproj">
+               ReferencedContainer = "container:NLP Free.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "BA84E5651E28CFD3001E8ED2"
                BuildableName = "NLPA1FreeUITests.xctest"
                BlueprintName = "NLPA1FreeUITests"
-               ReferencedContainer = "container:NLPA1Free.xcodeproj">
+               ReferencedContainer = "container:NLP Free.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "BA84E5461E28CFD3001E8ED2"
             BuildableName = "NLPA1Free.app"
             BlueprintName = "NLPA1Free"
-            ReferencedContainer = "container:NLPA1Free.xcodeproj">
+            ReferencedContainer = "container:NLP Free.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "BA84E5461E28CFD3001E8ED2"
             BuildableName = "NLPA1Free.app"
             BlueprintName = "NLPA1Free"
-            ReferencedContainer = "container:NLPA1Free.xcodeproj">
+            ReferencedContainer = "container:NLP Free.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +97,7 @@
             BlueprintIdentifier = "BA84E5461E28CFD3001E8ED2"
             BuildableName = "NLPA1Free.app"
             BlueprintName = "NLPA1Free"
-            ReferencedContainer = "container:NLPA1Free.xcodeproj">
+            ReferencedContainer = "container:NLP Free.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
