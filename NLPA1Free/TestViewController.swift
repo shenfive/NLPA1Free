@@ -23,7 +23,7 @@ class TestViewController: UIViewController {
     
     var qustions:NSMutableArray = NSMutableArray()
     let rechablity = Reachability.init()
-    let 最大問題數 = 16
+    let 最大問題數 = 19
     var 目前問題指標 = 0
     var 問題序 = [Int]()
 
@@ -127,8 +127,8 @@ class TestViewController: UIViewController {
         
         
         let utterance = AVSpeechUtterance(string: self.qustion.text!)
-        utterance.rate = 0.55
-        utterance.pitchMultiplier = 0.9
+        utterance.rate = 0.53
+        utterance.pitchMultiplier = 0.8
         
         //強制中文語音
         let voices = AVSpeechSynthesisVoice.speechVoices()

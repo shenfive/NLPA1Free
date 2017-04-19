@@ -111,11 +111,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="projectClub" translatesAutoresizingMaskIntoConstraints="NO" id="qwq-11-Ye9">
+                                        <rect key="frame" x="317" y="28" width="50" height="69"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="5lR-Kl-EPa"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="69" id="8Vc-Tq-7do"/>
+                                            <constraint firstAttribute="width" constant="50" id="IEJ-FU-hGh"/>
+                                            <constraint firstAttribute="height" constant="68.5" id="MJJ-0t-nhd"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qwq-11-Ye9" secondAttribute="trailing" constant="8" id="98S-wL-GeL"/>
                                     <constraint firstItem="1ti-d5-iWc" firstAttribute="top" secondItem="kOV-mW-tzQ" secondAttribute="top" constant="80" id="GPB-B8-35s"/>
                                     <constraint firstAttribute="trailing" secondItem="1ti-d5-iWc" secondAttribute="trailing" constant="8" id="HLV-FB-iqx"/>
+                                    <constraint firstItem="qwq-11-Ye9" firstAttribute="top" secondItem="kOV-mW-tzQ" secondAttribute="top" constant="28" id="cLp-q3-XbE"/>
                                     <constraint firstAttribute="bottom" secondItem="1ti-d5-iWc" secondAttribute="bottom" constant="8" id="dXT-Ia-cta"/>
                                     <constraint firstItem="1ti-d5-iWc" firstAttribute="leading" secondItem="kOV-mW-tzQ" secondAttribute="leading" constant="8" id="kN2-vj-htk"/>
                                 </constraints>
@@ -340,7 +351,7 @@
     </scenes>
     <resources>
         <image name="FB-share" width="304" height="112"/>
-        <image name="home_back" width="46" height="33"/>
+        <image name="home_back" width="92" height="66"/>
         <image name="projectClub" width="235" height="325"/>
         <image name="topPage" width="320" height="320"/>
     </resources>

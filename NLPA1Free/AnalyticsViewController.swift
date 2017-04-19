@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import Social
 
 class AnalyticsViewController: UIViewController {
     
     @IBOutlet weak var chartWeb: UIWebView!
     var userAnswers = [Int]()
+    var analyRes = 0
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,11 +28,11 @@ class AnalyticsViewController: UIViewController {
         let b = Float(countInt(number: 1, inIntArray: userAnswers)) / Float(userAnswers.count) * 100
         let c = Float(countInt(number: 2, inIntArray: userAnswers)) / Float(userAnswers.count) * 100
         let d = Float(countInt(number: 4, inIntArray: userAnswers)) / Float(userAnswers.count) * 100
-        var analyRes = 0
+        
         
         let analyticsTheArray = ["<p style='text-align:center' ><strong>根據本次的測試,你比較是視覺型（Visual）</strong></p><br />特點：<br />您習慣先用雙眼去看和接收外在信息，眼睛的學習和處理能力最快，所以他們喜歡顏色鮮明、外觀漂亮的人事物；常坐不安定，小動作多，能夠在同一時間做幾件事；在乎事情的重點，不在乎事情的細節，喜歡清楚、簡單的表達重點和在一開始就直入話題；喜歡節奏快的事物。<br /><br />身形／姿勢：<br />大多數情況下視覺形的人都偏瘦，當然也有胖的。他們頭多向上昂、行動快捷，說話時手的動作多且通常手活動在胸部以上。<br /><br />呼吸：<br />呼吸較淺，常止於胸腔上半部分。<br /><br />語調／語速：<br />語調簡單而單一，語速快。<br /><br />語言文字：<br />常使用和表達的文字有，我看到、清晰、模糊、漂亮、悅目、焦點、速度、彩色、燦爛、觀點、觀察、圖案、出現、凝望、光明、朦朧、明白、明顯地、鮮豔奪目、多彩多姿等等。",
-                            "<p style='text-align:center' ><strong>根據本次的測試,你比較是聽覺型（Auditory）</strong></p><br />特點：<br />您習慣先用耳朵去聽和接收信息，所以在許多時候他們的耳朵非常靈敏，十分重視寧靜的環境及聲音的質量，同時他們善於文字處理和在乎事情的細節，做事情非常注重程序和步驟，喜歡有條不紊的進行；善於歌唱和聆聽。<br/><br/>身形／姿勢：<br />您不會像視覺型那樣偏瘦也不會像觸覺型那樣強壯和有力，他們的身形可能會豐滿而鬆垮，當然他們也存在於每種身材當中。說話時可能會將手靠近或託住耳朵和嘴附近。<br/><br />呼吸：<br />呼吸平穩、有規律和有節奏，在胸腔與腹部之間。<br/><br/>語調／語速：<br />語調抑揚頓挫、高低快慢十分有節奏感，語速中等。<br/><br/>語言文字：<br />我聽到、聆聽、響亮、談談、聽懂、刺耳、溝通、寧靜、韻律、耳邊風、無話可說、值得一聽、清楚、清晰、詢問、討論、悅耳等等",
-                             "<p style='text-align:center' ><strong>根據本次的測試,你比較是觸覺型（Kinesthetic）</strong></p><br />特點：<br />觸覺型包含了觸覺、嗅覺、味覺，他們慣於先用感覺去感受和接收信息，所以在許多時候他們對自我的感覺非常的注重；在乎與人之間的關係、感覺及重要意義；言語中​​常提及感受或經歷。<br/><br/>身形／姿勢：<br />因為視覺型和聽覺型的人對觸碰感的要求遠沒有觸覺型的人高，所以相比之下觸覺型的人較為強壯和結實。<br/><br/>呼吸：<br />呼吸慢而深沉，會用到胸部以下及腹部。<br/><br/>語調／語速：<br />語調低沉，語速慢。<br/><br/>語言文字：<br />我感覺、壓迫、氣氛、把握、安全、危險、激動、口福、自然、壓力、匆忙、行動、難受、謹慎、順利、開心、快樂、幸福、成功、支持、一點都不怕、趁熱打鐵、興奮、冰冷、緊張、等等。"]
+                                 "<p style='text-align:center' ><strong>根據本次的測試,你比較是聽覺型（Auditory）</strong></p><br />特點：<br />您習慣先用耳朵去聽和接收信息，所以在許多時候他們的耳朵非常靈敏，十分重視寧靜的環境及聲音的質量，同時他們善於文字處理和在乎事情的細節，做事情非常注重程序和步驟，喜歡有條不紊的進行；善於歌唱和聆聽。<br/><br/>身形／姿勢：<br />您不會像視覺型那樣偏瘦也不會像觸覺型那樣強壯和有力，他們的身形可能會豐滿而鬆垮，當然他們也存在於每種身材當中。說話時可能會將手靠近或託住耳朵和嘴附近。<br/><br />呼吸：<br />呼吸平穩、有規律和有節奏，在胸腔與腹部之間。<br/><br/>語調／語速：<br />語調抑揚頓挫、高低快慢十分有節奏感，語速中等。<br/><br/>語言文字：<br />我聽到、聆聽、響亮、談談、聽懂、刺耳、溝通、寧靜、韻律、耳邊風、無話可說、值得一聽、清楚、清晰、詢問、討論、悅耳等等",
+                                 "<p style='text-align:center' ><strong>根據本次的測試,你比較是觸覺型（Kinesthetic）</strong></p><br />特點：<br />觸覺型包含了觸覺、嗅覺、味覺，他們慣於先用感覺去感受和接收信息，所以在許多時候他們對自我的感覺非常的注重；在乎與人之間的關係、感覺及重要意義；言語中​​常提及感受或經歷。<br/><br/>身形／姿勢：<br />因為視覺型和聽覺型的人對觸碰感的要求遠沒有觸覺型的人高，所以相比之下觸覺型的人較為強壯和結實。<br/><br/>呼吸：<br />呼吸慢而深沉，會用到胸部以下及腹部。<br/><br/>語調／語速：<br />語調低沉，語速慢。<br/><br/>語言文字：<br />我感覺、壓迫、氣氛、把握、安全、危險、激動、口福、自然、壓力、匆忙、行動、難受、謹慎、順利、開心、快樂、幸福、成功、支持、一點都不怕、趁熱打鐵、興奮、冰冷、緊張、等等。"]
         
         
         
@@ -42,7 +44,7 @@ class AnalyticsViewController: UIViewController {
         }else if c > d {
             analyRes = 2
         }else {
-            analyRes = 3
+            analyRes = 2
         }
         
         print("a:\(a)b:\(b)c:\(c)")
@@ -55,7 +57,7 @@ class AnalyticsViewController: UIViewController {
                                a,b,c
         )
         
-
+        
         chartWeb.loadHTMLString(webString, baseURL: nil )//URL(string: "https://www.apple.com.tw"))
         
         
@@ -73,11 +75,40 @@ class AnalyticsViewController: UIViewController {
             }
         }
         print("count=\(count)")
-    
+        
         return count
     }
-
+    
     @IBAction func backHome(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    @IBAction func fbShare(_ sender: UIButton){
+        print("share")
+        let shareAddress = ["https://www.facebook.com/732906446875789/photos/ms.c.eJwzNzayNDIxNDKzMDcxMDLUM4fwjSF8Azjf2NTEwMzCHADkIgmB.bps.a.732924006874033.1073741828.732906446875789/732924133540687/?type=3&theater","https://www.facebook.com/732906446875789/photos/ms.c.eJwzNzayNDIxNDKzMDcxMDLUM4fwjSF8Azjf2NTEwMzCHADkIgmB.bps.a.732924006874033.1073741828.732906446875789/732924126874021/?type=3&theater","https://www.facebook.com/732906446875789/photos/ms.c.eJwzNzayNDIxNDKzMDcxMDLUM4fwjSF8Azjf2NTEwMzCHADkIgmB.bps.a.732924006874033.1073741828.732906446875789/732924136874020/?type=3&theater"]
+        
+    
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
+            if let fbComposer = SLComposeViewController(forServiceType: SLServiceTypeFacebook){            
+                let theURL = URL(string: shareAddress[analyRes])
+                fbComposer.add(theURL)
+                present(fbComposer, animated: true, completion: nil)
+            }
+        }else{
+            let alert = UIAlertController(title: "Ooops!", message: "Please login to your facebook", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Login", style: .default, handler: {
+                (action) in
+                if let settingURL = URL(string: UIApplicationOpenSettingsURLString){
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(settingURL, options: [:], completionHandler: nil)
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                }
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
 }
